@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "296462406321",
+    "project_id": "catalogo-de-filmes-a1201",
+    "storage_bucket": "catalogo-de-filmes-a1201.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296462406321:android:9c26f8e247512b0c2c8890",
+        "android_client_info": {
+          "package_name": "com.lucassalbu.catalogodefilmessuperior"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296462406321-0glrgfnvuskb7aok0o2r5ubmh7l9ebff.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lucassalbu.catalogodefilmessuperior",
+            "certificate_hash": "41dafbed3d20b9a03b4047191ff6cf7b6125598c"
+          }
+        },
+        {
+          "client_id": "296462406321-6mm8uv35avdv8t0sr1bacdna2jr1p9m7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDePd10fR0d78vBIFnUWG27y4IFw2x1woQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296462406321-6mm8uv35avdv8t0sr1bacdna2jr1p9m7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

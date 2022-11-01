@@ -1,10 +1,13 @@
 package com.lucassalbu.catalogodefilmessuperior.ui.auth
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.lucassalbu.catalogodefilmessuperior.R
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentLoginBinding
 
@@ -22,6 +25,65 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //auth = Firebase.auth
+
+        initClicks()
+    }
+    private fun initClicks(){
+        //binding.btnLogin.setOnClickListener{validadeData()}
+
+        binding.btnRegister.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+
+        }
+        binding.btnRecover.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
+        }
+
+    }
+
+//    private fun validadeData() {
+//        val email = binding.edtEmail.text.toString().trim()
+//        val password = binding.edtSenha.text.toString().trim()
+//
+//        if (email.isNotEmpty()) {
+//
+//            if (password.isNotEmpty()) {
+//
+//                binding.progressBrar.isVisible = true
+//
+//                loginUser(email,password)
+//
+//            } else {
+//                Toast.makeText(requireContext(), "Informe sua senha", Toast.LENGTH_SHORT).show()
+//            }
+//        } else {
+//            Toast.makeText(requireContext(), "Informe seu E-mail", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//
+//    private fun loginUser(email: String, password: String){
+//
+//        auth.signInWithEmailAndPassword(email, password)
+//            .addOnCompleteListener(requireActivity()) { task ->
+//                if (task.isSuccessful) {
+//                    findNavController().navigate(R.id.action_global_homeFragment2)
+//                } else {
+//                    Log.i("INFOTESTE", "loginUser: ${task.exception?.message}")
+//                    Toast.makeText(
+//                        requireContext(),
+//                        FireBaseHelper.validError(task.exception?.message ?: ""),
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    binding.progressBrar.isVisible = false
+//                }
+//            }
+//
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
