@@ -1,4 +1,4 @@
-package com.lucassalbu.catalogodefilmessuperior.ui.adapter
+package com.lucassalbu.catalogodefilmessuperior.adapter
 
 import android.app.Activity
 import android.icu.text.CaseMap.Title

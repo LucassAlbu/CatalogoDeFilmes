@@ -12,10 +12,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.lucassalbu.catalogodefilmessuperior.R
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentHomeBinding
-import com.lucassalbu.catalogodefilmessuperior.ui.MoviesFragment
-import com.lucassalbu.catalogodefilmessuperior.ui.TrendingFragment
-import com.lucassalbu.catalogodefilmessuperior.ui.TvFragment
-import com.lucassalbu.catalogodefilmessuperior.ui.adapter.ViewPagerAdapter
+import com.lucassalbu.catalogodefilmessuperior.ui.exhibition.MoviesFragment
+import com.lucassalbu.catalogodefilmessuperior.ui.exhibition.TrendingFragment
+import com.lucassalbu.catalogodefilmessuperior.ui.exhibition.TvFragment
+import com.lucassalbu.catalogodefilmessuperior.adapter.ViewPagerAdapter
 
 
 class HomeFragment : Fragment() {
