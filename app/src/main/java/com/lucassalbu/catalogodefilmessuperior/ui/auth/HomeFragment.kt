@@ -12,6 +12,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.lucassalbu.catalogodefilmessuperior.R
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentHomeBinding
+import com.lucassalbu.catalogodefilmessuperior.ui.MoviesFragment
+import com.lucassalbu.catalogodefilmessuperior.ui.TrendingFragment
+import com.lucassalbu.catalogodefilmessuperior.ui.TvFragment
+import com.lucassalbu.catalogodefilmessuperior.ui.adapter.ViewPagerAdapter
 
 
 class HomeFragment : Fragment() {
@@ -46,16 +50,16 @@ class HomeFragment : Fragment() {
 
     private fun loggoutApp() {
         auth.signOut()
-        findNavController().navigate(R.id.action_homeFragment_to_autentication)
+        findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
     }
 
     private fun configTablayout() {
         val adapter = ViewPagerAdapter(requireActivity())
         binding.viewPager.adapter = adapter
 
-        adapter.addFragment(TodoFragment(), "A Fazer")
-        adapter.addFragment(DoingFragment(), "Fazendo")
-        adapter.addFragment(DoneFragment(), "Feitas")
+        adapter.addFragment(MoviesFragment(), "Filmes")
+        adapter.addFragment(TvFragment(), "Programas de TV")
+        adapter.addFragment(TrendingFragment(), "Trendings da semana")
 
         binding.viewPager.offscreenPageLimit = adapter.itemCount
 

@@ -19,7 +19,6 @@ import com.lucassalbu.catalogodefilmessuperior.helper.FireBaseHelper
 
 class LoginFragment : Fragment() {
 
-
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -40,8 +39,9 @@ class LoginFragment : Fragment() {
 
         initClicks()
     }
-    private fun initClicks(){
-        binding.btnLogin.setOnClickListener{validadeData()}
+
+    private fun initClicks() {
+        binding.btnLogin.setOnClickListener { validadeData() }
 
         binding.btnRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
@@ -52,6 +52,7 @@ class LoginFragment : Fragment() {
         }
 
     }
+
     private fun validadeData() {
         val email = binding.edtEmail.text.toString().trim()
         val password = binding.edtSenha.text.toString().trim()
@@ -62,7 +63,7 @@ class LoginFragment : Fragment() {
 
                 binding.progressBrar.isVisible = true
 
-                loginUser(email,password)
+                loginUser(email, password)
 
             } else {
                 Toast.makeText(requireContext(), "Informe sua senha", Toast.LENGTH_SHORT).show()
@@ -72,12 +73,12 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun loginUser(email: String, password: String){
+    private fun loginUser(email: String, password: String) {
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    findNavController().navigate(R.id.action_global_homeFragment)
                 } else {
                     Log.i("INFOTESTE", "loginUser: ${task.exception?.message}")
                     Toast.makeText(
