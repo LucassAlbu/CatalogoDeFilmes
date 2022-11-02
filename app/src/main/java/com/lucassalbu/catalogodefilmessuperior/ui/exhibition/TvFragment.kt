@@ -11,8 +11,9 @@ import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentHomeBinding
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentMoviesBinding
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentTvBinding
 import com.lucassalbu.catalogodefilmessuperior.ui.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TvFragment : Fragment() {
 
     private var _binding: FragmentTvBinding? = null

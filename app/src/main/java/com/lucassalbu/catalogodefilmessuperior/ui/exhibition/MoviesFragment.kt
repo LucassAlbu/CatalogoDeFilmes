@@ -14,12 +14,12 @@ import com.lucassalbu.catalogodefilmessuperior.adapter.MovieAdapter
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentHomeBinding
 import com.lucassalbu.catalogodefilmessuperior.models.Movie
 import com.lucassalbu.catalogodefilmessuperior.ui.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MoviesFragment : Fragment() {
 
     lateinit var popularmovieAdapter: MovieAdapter
-    lateinit var topRatedAdapter: MovieAdapter
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -34,37 +34,30 @@ class MoviesFragment : Fragment() {
         return binding.root
     }
 
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        initRecyclerView()
-//        getMovies()
-//
-//    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-//    private fun initRecyclerView() {
-//        binding.rvMovies.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL,false)
-//        popularmovieAdapter = MovieAdapter(this)
-//        binding.rvMovies.adapter = popularmovieAdapter
-//
-////        binding.rvTopMovies.layoutManager = LinearLayoutManager( this, RecyclerView.HORIZONTAL,false)
-////        topRatedAdapter = MovieAdapter(this)
-////        binding.rvTopMovies.adapter = topRatedAdapter
-//    }
-//
-//    private fun getMovies() {
-//        viewModel.getPopularMovie()
-//        viewModel.popularMovie.observe(viewLifecycleOwner) {
-//            popularmovieAdapter.setMovieList(it.movies as ArrayList<Movie>)
-//            popularmovieAdapter.notifyDataSetChanged()
-//        }
-////        viewModel.getTopMovie()
-////        viewModel.topMovie.observe(this){
-////            topRatedAdapter.setMovieList(it.movies as ArrayList<Movie>)
-////            topRatedAdapter.notifyDataSetChanged()
-////}
-////        }
+        initRecyclerView()
+        getMovies()
 
+    }
+
+    private fun initRecyclerView() {
+        binding.rvMovies.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,false)
+        popularmovieAdapter = MovieAdapter()
+        binding.rvMovies.adapter = popularmovieAdapter
+
+    }
+
+
+    private fun getMovies() {
+        viewModel.getPopularMovie()
+        viewModel.popularMovie.observe(viewLifecycleOwner) {
+            popularmovieAdapter.setMovieList(it.movies as ArrayList<Movie>)
+            popularmovieAdapter.notifyDataSetChanged()
+        }
+
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

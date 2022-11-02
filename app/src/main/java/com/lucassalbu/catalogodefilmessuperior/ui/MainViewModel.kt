@@ -19,14 +19,14 @@ class MainViewModel @Inject constructor(
     private var _popularMovie = MutableLiveData<MoviesModel>()
     val popularMovie: LiveData<MoviesModel> = _popularMovie
 
-    private var _movieDetailModel = MutableLiveData<MovieDetailModel>()
-    val movieDetailModel: LiveData<MovieDetailModel> = _movieDetailModel
-
-    private var _topMovie = MutableLiveData<MoviesModel>()
-    val topMovie: LiveData<MoviesModel> = _topMovie
-
-    private var _similarMovie = MutableLiveData<MoviesModel>()
-    val similarMovie: LiveData<MoviesModel> = _similarMovie
+//    private var _movieDetailModel = MutableLiveData<MovieDetailModel>()
+//    val movieDetailModel: LiveData<MovieDetailModel> = _movieDetailModel
+//
+//    private var _topMovie = MutableLiveData<MoviesModel>()
+//    val topMovie: LiveData<MoviesModel> = _topMovie
+//
+//    private var _similarMovie = MutableLiveData<MoviesModel>()
+//    val similarMovie: LiveData<MoviesModel> = _similarMovie
 
     fun getPopularMovie() {
         viewModelScope.launch {
@@ -34,26 +34,26 @@ class MainViewModel @Inject constructor(
             _popularMovie.postValue(response.body())
         }
     }
-    fun getMovieDetail(movieID: Int){
-        viewModelScope.launch {
-            val response = repository.getMovieDetail(movieID)
-            _movieDetailModel.postValue(response.body())
-        }
-    }
-
-    fun getTopMovie(){
-        viewModelScope.launch {
-            val response = repository.getTopRated()
-            _topMovie.postValue(response.body())
-
-        }
-    }
-
-    fun getSimilarMovies(movieID: Int){
-        viewModelScope.launch {
-            val response = repository.getSimilarMovies(movieID)
-            _similarMovie.postValue(response.body())
-        }
-    }
+//    fun getMovieDetail(movieID: Int){
+//        viewModelScope.launch {
+//            val response = repository.getMovieDetail(movieID)
+//            _movieDetailModel.postValue(response.body())
+//        }
+//    }
+//
+//    fun getTopMovie(){
+//        viewModelScope.launch {
+//            val response = repository.getTopRated()
+//            _topMovie.postValue(response.body())
+//
+//        }
+//    }
+//
+//    fun getSimilarMovies(movieID: Int){
+//        viewModelScope.launch {
+//            val response = repository.getSimilarMovies(movieID)
+//            _similarMovie.postValue(response.body())
+//        }
+//    }
 
 }

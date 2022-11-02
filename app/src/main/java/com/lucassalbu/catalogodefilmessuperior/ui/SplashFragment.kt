@@ -14,7 +14,9 @@ import com.google.firebase.ktx.Firebase
 import com.lucassalbu.catalogodefilmessuperior.R
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentLoginBinding
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentSplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashFragment : Fragment() {
 
     private var _binding: FragmentSplashBinding? = null

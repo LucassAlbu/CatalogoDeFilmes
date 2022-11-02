@@ -5,8 +5,9 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import com.lucassalbu.catalogodefilmessuperior.R
 import com.lucassalbu.catalogodefilmessuperior.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -18,4 +19,6 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
     }
+
+
 }

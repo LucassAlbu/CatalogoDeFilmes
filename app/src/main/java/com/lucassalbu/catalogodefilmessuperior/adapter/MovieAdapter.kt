@@ -9,12 +9,14 @@ import com.bumptech.glide.Glide
 import com.lucassalbu.catalogodefilmessuperior.R
 import com.lucassalbu.catalogodefilmessuperior.databinding.RvMoviesItemBinding
 import com.lucassalbu.catalogodefilmessuperior.models.Movie
+import com.lucassalbu.catalogodefilmessuperior.models.MoviesModel
 import com.lucassalbu.catalogodefilmessuperior.ui.exhibition.MovieDetailFragment
+import com.lucassalbu.catalogodefilmessuperior.ui.exhibition.MoviesFragment
 import com.lucassalbu.catalogodefilmessuperior.utils.Constants.Companion.POSTER_BASE_URL
+import dagger.hilt.android.AndroidEntryPoint
 
-class MovieAdapter(
-    private val context: Context
-) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+
+class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
 
     var movieList = ArrayList<Movie>()
 
@@ -23,41 +25,32 @@ class MovieAdapter(
         this.movieList = data
     }
 
+    inner class MyViewHolder(val binding: RvMoviesItemBinding) :
+        RecyclerView.ViewHolder(binding.root){
 
-    class MovieViewHolder(
-        private val binding: RvMoviesItemBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        fun bindingMovieList(movie: Movie, context: Context) {
-//            binding.tvTitle.text = movie.title.toString().trim()
-//            binding.tvReleaseYear.text = movie.release_date.toString().format()
-//            binding.tvGenre.text = movie.genre_ids[0].toString().trim()
-
-            Glide.with(binding.ivMoviePoster).load(POSTER_BASE_URL + movie.poster_path)
-                .error(R.drawable.ic_logo).into(binding.ivMoviePoster)
-
-            binding.cdPrincipal.setOnClickListener {
-                val intent = Intent(context, MovieDetailFragment::class.java)
-                intent.putExtra("movieID", movie.id)
-                context.startActivity(intent)
-            }
         }
-    }
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val binding = RvMoviesItemBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        return MyViewHolder(
+            RvMoviesItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         )
-        return MovieViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val movies = movieList[position]
 
-        holder.bindingMovieList(movieList[position], context)
+
+        Glide.with(holder.binding.ivMoviePoster).load(POSTER_BASE_URL + movies.poster_path)
+            .error(R.drawable.ic_logo).into(holder.binding.ivMoviePoster)
 
     }
 
     override fun getItemCount() = movieList.size
+
 
 
 }
