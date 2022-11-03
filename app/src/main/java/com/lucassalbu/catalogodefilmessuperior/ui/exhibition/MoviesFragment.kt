@@ -13,6 +13,7 @@ import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentMoviesBinding
 import com.lucassalbu.catalogodefilmessuperior.adapter.MovieAdapter
 import com.lucassalbu.catalogodefilmessuperior.databinding.FragmentHomeBinding
 import com.lucassalbu.catalogodefilmessuperior.models.Movie
+import com.lucassalbu.catalogodefilmessuperior.models.TvShow
 import com.lucassalbu.catalogodefilmessuperior.ui.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +21,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class MoviesFragment : Fragment() {
 
     lateinit var popularmovieAdapter: MovieAdapter
+    lateinit var topRatedAdapter: MovieAdapter
+    lateinit var upComingAdapter: MovieAdapter
+
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -43,9 +47,21 @@ class MoviesFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        binding.rvMovies.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL,false)
+        binding.rvMovies.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         popularmovieAdapter = MovieAdapter()
         binding.rvMovies.adapter = popularmovieAdapter
+
+
+        binding.rvTopMovies.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        topRatedAdapter = MovieAdapter()
+        binding.rvTopMovies.adapter = topRatedAdapter
+
+        binding.rvUpComingMovies.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        upComingAdapter = MovieAdapter()
+        binding.rvUpComingMovies.adapter = upComingAdapter
 
     }
 
@@ -55,6 +71,16 @@ class MoviesFragment : Fragment() {
         viewModel.popularMovie.observe(viewLifecycleOwner) {
             popularmovieAdapter.setMovieList(it.movies as ArrayList<Movie>)
             popularmovieAdapter.notifyDataSetChanged()
+        }
+        viewModel.getTopMovie()
+        viewModel.topMovie.observe(viewLifecycleOwner) {
+            topRatedAdapter.setMovieList(it.movies as ArrayList<Movie>)
+            topRatedAdapter.notifyDataSetChanged()
+        }
+        viewModel.getUpcomingMovies()
+        viewModel.upcomingMovie.observe(viewLifecycleOwner) {
+            upComingAdapter.setMovieList(it.movies as ArrayList<Movie>)
+            upComingAdapter.notifyDataSetChanged()
         }
 
     }

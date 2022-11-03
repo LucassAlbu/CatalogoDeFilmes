@@ -2,6 +2,7 @@ package com.lucassalbu.catalogodefilmessuperior.repositories
 
 import com.lucassalbu.catalogodefilmessuperior.models.MovieDetailModel
 import com.lucassalbu.catalogodefilmessuperior.models.MoviesModel
+import com.lucassalbu.catalogodefilmessuperior.models.TvShowModel
 import com.lucassalbu.catalogodefilmessuperior.serviceApi.ApiInterface
 import retrofit2.Response
 import javax.inject.Inject
@@ -24,6 +25,14 @@ class RepositoryCF @Inject  constructor(
 
     override suspend fun getSimilarMovies(movieID: Int): Response<MoviesModel> {
         return apiInterface.getSimilarMovies(movieID)
+    }
+
+    override suspend fun getUpcomingMovies(): Response<MoviesModel> {
+        return apiInterface.getUpcomingMovies()
+    }
+
+    override suspend fun getTvshows(): Response<TvShowModel> {
+        return apiInterface.getPopularTvShows()
     }
 
 

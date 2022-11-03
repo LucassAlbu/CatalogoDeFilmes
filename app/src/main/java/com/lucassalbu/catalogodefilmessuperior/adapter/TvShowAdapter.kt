@@ -9,17 +9,19 @@ import com.bumptech.glide.Glide
 import com.lucassalbu.catalogodefilmessuperior.R
 import com.lucassalbu.catalogodefilmessuperior.databinding.RvMoviesItemBinding
 import com.lucassalbu.catalogodefilmessuperior.models.Movie
+import com.lucassalbu.catalogodefilmessuperior.models.TvShow
 import com.lucassalbu.catalogodefilmessuperior.utils.Constants.Companion.POSTER_BASE_URL
 
 
 
-class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
+class TvShowAdapter: RecyclerView.Adapter<TvShowAdapter.MyViewHolder>() {
 
-    var movieList = ArrayList<Movie>()
+    private var tvShowList = ArrayList<TvShow>()
 
-    @JvmName("setMovieList1")
-    fun setMovieList(data: ArrayList<Movie>) {
-        this.movieList = data
+
+    @JvmName("setTvShowList1")
+    fun setTvShowList(data: ArrayList<TvShow>) {
+        this.tvShowList = data
     }
 
     inner class MyViewHolder(val binding: RvMoviesItemBinding) :
@@ -38,7 +40,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val movies = movieList[position]
+        val movies = tvShowList[position]
 
 
 
@@ -48,7 +50,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MyViewHolder>() {
                 }
 
 
-    override fun getItemCount() = movieList.size
+    override fun getItemCount() = tvShowList.size
 
 
 
