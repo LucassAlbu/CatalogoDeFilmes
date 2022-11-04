@@ -19,8 +19,8 @@ class RepositoryCF @Inject  constructor(
         return apiInterface.getMoviesDetails(movieID)
     }
 
-    override suspend fun getTopRated(): Response<MoviesModel> {
-        return apiInterface.getTopRated()
+    override suspend fun getTopRated(page: Int): Response<MoviesModel> {
+        return apiInterface.getTopRated(page)
     }
 
     override suspend fun getSimilarMovies(movieID: Int): Response<MoviesModel> {
